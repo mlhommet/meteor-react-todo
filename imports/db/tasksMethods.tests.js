@@ -5,6 +5,8 @@ import { assert } from "chai";
 import { TasksCollection } from "/imports/db/TasksCollection";
 import "/imports/db/tasksMethods";
 
+// Code that runs tests on the Client/Server DDP interactions
+
 if (Meteor.isServer) {
   describe("Tasks", () => {
     describe("methods", () => {

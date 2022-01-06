@@ -1,5 +1,8 @@
 import { check } from "meteor/check";
 import { TasksCollection } from "/imports/db/TasksCollection";
+import { insertTask } from "/imports/api/tasksFunctions";
+
+// Declare Methods that connect client actions to server code using DDP protocole
 
 Meteor.methods({
   "tasks.insert"(text) {
@@ -9,11 +12,7 @@ Meteor.methods({
       throw new Meteor.Error("Not authorized.");
     }
 
-    TasksCollection.insert({
-      text,
-      createdAt: new Date(),
-      userId: this.userId,
-    });
+    insertTask(text, this.userId);
   },
 
   "tasks.remove"(taskId) {
